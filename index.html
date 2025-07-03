@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Kanalına Katıl</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f2f5;
+            padding: 15px;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .join-button {
+            background-color: #0088cc;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+
+        .join-button:hover {
+            background-color: #006699;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .profile-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .title {
+                font-size: 1.25rem;
+            }
+
+            .description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{your-pixel-id-goes-here}');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none" 
+        src="https://www.facebook.com/tr?id={your-pixel-id-goes-here}&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+</head>
+<body>
+    <div class="container">
+        <img src="vta.jpg" alt="Kanal Profil Fotoğrafı" class="profile-image">
+        <h1 class="title">Vertex Trade Academy</h1>
+        <p class="description">Ücretsiz Eğitimlere Katılın!</p>
+        <a id="huseyin9cm" href="#" class="join-button" onclick="joinTelegramChannel(event)">Kanala Katıl</a>
+    </div>
+    <script>
+    function joinTelegramChannel(e) {
+        fbq('track','joingroup');
+        var tgUrl = 'tg://resolve?domain=vertextradeacademy';
+        var webUrl = 'https://t.me/vertextradeacademy';
+        var timeout;
+        var opened = false;
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = tgUrl;
+        document.body.appendChild(iframe);
+        timeout = setTimeout(function() {
+            if (!opened) {
+                window.location.href = webUrl;
+            }
+        }, 1200);
+        window.onblur = function() {
+            opened = true;
+            clearTimeout(timeout);
+        };
+        e.preventDefault();
+    }
+    </script>
+</body>
+</html>
