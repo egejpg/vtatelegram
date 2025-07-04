@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Kanalına Katıl</title>
+    <title>Vertex'e Katılın</title>
     <style>
         * {
             margin: 0;
@@ -91,6 +91,7 @@
             }
         }
     </style>
+
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -101,12 +102,12 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '{1070108921244049}');
+    fbq('init', '1070108921244049');
     fbq('track', 'PageView');
     </script>
     <noscript>
     <img height="1" width="1" style="display:none" 
-        src="https://www.facebook.com/tr?id={1070108921244049}&ev=PageView&noscript=1"/>
+        src="https://www.facebook.com/tr?id=1070108921244049&ev=PageView&noscript=1"/>
     </noscript>
     <!-- End Facebook Pixel Code -->
 
@@ -116,30 +117,47 @@
         <img src="vta.jpg" alt="Kanal Profil Fotoğrafı" class="profile-image">
         <h1 class="title">Vertex Trade Academy</h1>
         <p class="description">Ücretsiz Eğitimlere Katılın!</p>
-        <a id="huseyin9cm" href="#" class="join-button" onclick="joinTelegramChannel(event)">Kanala Katıl</a>
+        <a id="huseyin9cm" href="#" class="join-button">Gruba Katıl</a>
     </div>
+
     <script>
-    function joinTelegramChannel(e) {
+    // Base64 ile encode edilmiş URL'ler
+    const tgAppEncoded = "dGc6Ly9yZXNvbHZlP2RvbWFpbj12ZXJ0ZXh0cmFkZWFjYWRlbXk=";
+    const tgWebEncoded = "aHR0cHM6Ly90Lm1lL3ZlcnRleHRyYWRlYWNhZGVteQ==";
+
+    // Base64 decode fonksiyonu
+    function decodeBase64(str) {
+        return atob(str);
+    }
+
+    function handleJoin(e) {
         fbq('track','joingroup');
-        var tgUrl = 'tg://resolve?domain=vertextradeacademy';
-        var webUrl = 'https://t.me/vertextradeacademy';
+
+        var tgUrl = decodeBase64(tgAppEncoded);
+        var webUrl = decodeBase64(tgWebEncoded);
+
         var timeout;
         var opened = false;
         var iframe = document.createElement('iframe');
         iframe.style.display = 'none';
         iframe.src = tgUrl;
         document.body.appendChild(iframe);
+
         timeout = setTimeout(function() {
             if (!opened) {
                 window.location.href = webUrl;
             }
         }, 1200);
+
         window.onblur = function() {
             opened = true;
             clearTimeout(timeout);
         };
+
         e.preventDefault();
     }
+
+    document.getElementById('huseyin9cm').addEventListener('click', handleJoin);
     </script>
 </body>
 </html>
